@@ -1,0 +1,42 @@
+ALGORITHM algo_gmc_checkpoint
+VAR
+  phrase : STRING;
+  nb_voyelles : INTEGER := 0;
+  nb_mots : INTEGER := 0;
+  nb_carac_phrase : INTEGER;
+  i : INTEGER;
+  last_carac : CHAR := ".";
+  carac : CHAR;
+
+BEGIN
+
+  REPEAT
+    Read(phrase)
+    nb_carac_phrase := phrase.length;
+  UNTIL (phrase[nb_carac_phrase-1] = last_carac)
+  
+
+  
+  FOR i FROM 0 TO nb_carac_phrase - 1 STEP 1  DO
+    
+    carac := phrase[i];
+    
+    IF (carac = " " OR carac = ".") THEN
+      nb_mots := nb_mots + 1;
+    ELSE_IF ( (carac = "a") OR (carac = "e") OR (carac = "i") OR (carac = "o") OR (carac = "u") OR (carac = "y") OR (carac = "A") OR (carac = "E") OR (carac = "I") OR (carac = "O") OR (carac = "U") OR (carac = "Y")) THEN
+      nb_voyelles := nb_voyelles + 1;
+    ELSE
+      nb_mots := nb_mots;
+      nb_voyelles := nb_voyelles;
+    END_IF
+
+  END_FOR
+
+  Write("La longeur de la phrase : ")
+  Write(nb_carac_phrase)
+  Write("Le nombre de voyelles : ")
+  Write(nb_voyelles)
+  Write("Le nombre de mots : ")
+  Write(nb_mots)
+  
+END
